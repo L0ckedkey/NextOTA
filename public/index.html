@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NextOTA - Home</title>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+        .roboto-regular {
+            font-family: "Roboto", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+          }
+
+          .roboto-light {
+            font-family: "Roboto", sans-serif;
+            font-weight: 300;
+            font-style: normal;
+          }
+    </style>
+    <script src="main.js" defer></script>
+</head>
+<body style="background-color: #0F0F0F; display: flex; margin: 3% 5% 0 5%; justify-content: center;" >
+    <div style="max-width: 50%; padding: 2%; border-radius: 10px; border: 2px solid #008170;">
+        <h2 style="color: #ECFFE6; padding-bottom: 3%;" class="roboto-regular">Listed Device</h2>
+        <div class="device-list"></div>
+    </div>
+
+    <div style="margin-left: 10%; max-width: 100%;">
+        <div id="upload-file" style="padding: 10px; border: solid 2px #80AF81; border-radius: 10px;">
+            <p class="roboto-light" style="color: #ECFFE6;">Click Here to Upload File</p>
+            <input type="file" id="fileInput" style="display: none;"  accept=".bin"/>
+        </div>
+        <p id="file-name" class="roboto-light" style="color: #ECFFE6; width: 100%; text-align: center;"></p>
+    </div>
+</body>
+</html>
