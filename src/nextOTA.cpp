@@ -12,9 +12,9 @@ void NextOTA::connect(const String& boardType) {
     HTTPClient http;
     WiFiClient client;
 
-    String url = "http://" + serverIP + ":3000";
+    String url = "http://" + serverIP + ":3000/register";
     http.begin(client, url);
-    http.addHeader("Content-Type", "application/x-www-form-urlencoded");
+    http.addHeader("Content-Type", "application/json");
 
     String ip = WiFi.localIP().toString();
     String mac = WiFi.macAddress();
