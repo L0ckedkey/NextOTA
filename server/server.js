@@ -13,10 +13,6 @@ class Controller {
 }
 
 const controllers = [];
-const devices = [
-    { ip: '192.168.10.1', type: 'ESP8266' },
-    { ip: '192.168.10.2', type: 'ESP32' }
-];
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -24,7 +20,7 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-app.post('/api/controller', (req, res) => {
+app.post('/register', (req, res) => {
     const { ip, mac, name } = req.body;
     const newController = new Controller(ip, mac, name);
     controllers.push(newController);
@@ -32,7 +28,7 @@ app.post('/api/controller', (req, res) => {
     res.status(201).json({ message: 'Controller added successfully', controller: newController });
 });
 
-app.get('/api/devices', (req, res) => {
+app.get('/devices', (req, res) => {
     res.json(controllers);
 });
 
