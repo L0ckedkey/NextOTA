@@ -21,6 +21,7 @@ app.get('/', (req, res) => {
 });
 
 app.post('/register', (req, res) => {
+    console.log(req)
     const { ip, mac, name } = req.body;
     const newController = new Controller(ip, mac, name);
     controllers.push(newController);
