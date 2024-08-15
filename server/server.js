@@ -59,6 +59,7 @@ function broadcastControllers() {
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.post('/register', (req, res) => {
+    console.log(req.body)
     const { ip, mac, name } = req.body;
 
     const existingController = controllers.find(controller => controller.mac === mac);

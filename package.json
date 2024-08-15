@@ -1,5 +1,7 @@
 {
   "dependencies": {
+
+    "ws": "^8.18.0"
     "multer": "^1.4.5-lts.1"
   }
 }
