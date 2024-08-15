@@ -12,6 +12,7 @@ class NextOTA {
     void begin(const String& ip);
     void connect(const String& boardType);
     void keepAlive();
+    void updateFirmware();
   
   private:
     String serverIP;

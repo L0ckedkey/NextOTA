@@ -17,6 +17,7 @@ void setup()
   }
   nextOTA.begin("10.22.65.109");
   nextOTA.connect("asd");
+  nextOTA.updateFirmware();
 }
 
 void loop() {
