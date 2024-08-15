@@ -11,9 +11,11 @@ class NextOTA {
     NextOTA();
     void begin(const String& ip);
     void connect(const String& boardType);
+    void keepAlive();
   
   private:
     String serverIP;
+    String boardType;
 };
 
 #endif

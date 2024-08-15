@@ -1,8 +1,8 @@
 #include "nextOTA.h"
 #include <ESP8266WiFi.h>
 
-const char* ssid = "A 1105B";
-const char* password = "12345678";
+const char* ssid = "NA Office";
+const char* password = "NaCakepCakep";
 
 NextOTA nextOTA;
 
@@ -15,8 +15,10 @@ void setup()
     delay(500);
     Serial.print(".");
   }
-  nextOTA.begin("192.168.100.97");
+  nextOTA.begin("10.22.65.109");
   nextOTA.connect("asd");
 }
 
-void loop() {}
+void loop() {
+  nextOTA.keepAlive();
+}
