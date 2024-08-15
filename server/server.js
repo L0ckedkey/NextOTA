@@ -1,6 +1,10 @@
 const express = require('express');
 const path = require('path');
 const WebSocket = require('ws');
+const multer = require('multer');
+const fs = require('fs');
+
+const upload = multer({ dest: 'uploads/' });
 
 const app = express();
 const port = 3000;
@@ -70,6 +74,40 @@ app.post('/register', (req, res) => {
 
         res.status(201).json({ message: 'Controller added successfully', controller: newController });
     }
+});
+
+
+app.post('/upload', upload.single('file'), (req, res) => {
+    if (!req.file) {
+        return res.status(400).json({ message: 'No file uploaded' });
+    }
+
+    console.log('File uploaded:', req.file.filename);
+    res.status(200).json({ message: 'File uploaded successfully', filename: req.file.filename });
+});
+
+app.post('/distribute', (req, res) => {
+    const { filename } = req.body;
+    const filePath = path.join(__dirname, 'uploads', filename);
+
+    if (!fs.existsSync(filePath)) {
+        return res.status(404).json({ message: 'File not found' });
+    }
+
+    controllers.forEach(controller => {
+        const url = `http://${controller.ip}:3000/update`; // Endpoint for boards to get the firmware
+        // Send HTTP request to each board to start the update
+        fetch(url, {
+            method: 'POST',
+            body: JSON.stringify({ file: filename }),
+            headers: { 'Content-Type': 'application/json' }
+        })
+        .then(response => response.json())
+        .then(data => console.log(`Update sent to ${controller.ip}:`, data))
+        .catch(error => console.error(`Failed to update ${controller.ip}:`, error));
+    });
+
+    res.status(200).json({ message: 'Firmware distribution initiated' });
 });
 
 app.post('/alive', (req, res) => {
