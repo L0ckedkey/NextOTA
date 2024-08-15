@@ -15,7 +15,7 @@ class Controller {
     }
 }
 
-const TIMEOUT_THRESHOLD = 1000;
+const TIMEOUT_THRESHOLD = 2000;
 
 function cleanUpOldDevices() {
     const now = Date.now();
